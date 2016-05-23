@@ -30,6 +30,8 @@ namespace DevtechWebSiteTests.HomePageTests
         //Check if top menu elements are gone
         public void CheckIfTopMenuElementsAreGone()
         {
+            DevtechHomePage onDevtechHomePage = new DevtechHomePage();
+            onDevtechHomePage.MinimizeWindow();
             Assert.AreEqual(DevtechHomePage.CanGetAllLinksFromTopBar().Count, 0);
         }
 
@@ -38,6 +40,7 @@ namespace DevtechWebSiteTests.HomePageTests
         public void CheckIfSideBarIsVisible()
         {
             DevtechHomePage onDevtechHomePage = new DevtechHomePage();
+            onDevtechHomePage.MinimizeWindow();
             onDevtechHomePage.CanClickOnSideBar();
             CollectionAssert.AreEqual(DevtechHomePage.CanGetAllLinksFromTopBar(), DevtechHomePage.AllLinksFromSideBar());
         }

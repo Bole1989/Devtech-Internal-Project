@@ -329,6 +329,11 @@ namespace TestFrameWorkDevtech.Page_classes
             return value;
         }
 
+        public void MinimizeWindow()
+        {
+            Driver.Manage().Window.Size = new System.Drawing.Size(500, 1000);
+        }
+
         public string GetTextOnPage()
         {
             var textElement= Wait.Until(ExpectedConditions.ElementToBeClickable(HomePagep1Text));

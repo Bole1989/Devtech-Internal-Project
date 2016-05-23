@@ -23,8 +23,8 @@ namespace TestFrameWorkDevtech
         public void SetWebPage(IWebDriver driver)
         {           
             driver.Navigate().GoToUrl(PropertyValues.LoginUrl);
-            // driver.Manage().Window.Maximize();
-            driver.Manage().Window.Size = new System.Drawing.Size(500, 1000);
+             driver.Manage().Window.Maximize();
+            //driver.Manage().Window.Size = new System.Drawing.Size(500, 1000);
         }
         public void StartWebBrowsers()
         {
