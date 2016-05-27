@@ -44,5 +44,21 @@ namespace DevtechWebSiteTests.HomePageTests
             onDevtechHomePage.CanClickOnSideBar();
             CollectionAssert.AreEqual(DevtechHomePage.CanGetAllLinksFromTopBar(), DevtechHomePage.AllLinksFromSideBar());
         }
+        
+        [TestMethod]
+        //Check footer links with lists
+        public void CheckFooterLinks()
+        {
+            CollectionAssert.AreEqual(FooterPage.CanGetAllLinksFromFooter(), FooterPage.AllLinksFromFooter());
+        }
+        
+        [TestMethod]
+        //Check footer links with dictionary
+        public void CheckDictionaryFooterLinks()
+        {
+            FooterPage.CanGetAllDictionaryLinksFromFooter();
+        }
+
+
     }
 }

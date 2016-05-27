@@ -12,5 +12,7 @@ namespace TestFrameWorkDevtech.Page_classes
         {
             return BaseClass.Title == PropertyValues.TeamAsAServicePageTitle;
         }
+
+
     }
 }

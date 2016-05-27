@@ -10,7 +10,8 @@ namespace TestFrameWorkDevtech.Page_classes
     {
         public bool IsAtTaaSPodcastPage()
         {
-            return BaseClass.Title == PropertyValues.TaaSPodcastPageTitle;
+            //return BaseClass.Title == PropertyValues.TaaSPodcastPageTitle;
+            return BaseClass.CurrentUrl == PropertyValues.TaasPodcastPageUrl;
         }
     }
 }

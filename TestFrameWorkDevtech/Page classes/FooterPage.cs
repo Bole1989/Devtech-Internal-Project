@@ -66,6 +66,88 @@ namespace TestFrameWorkDevtech.Page_classes
             Driver.SwitchTo().Window(Driver.WindowHandles.Last());
             return new GooglePage();
         }
+
         #endregion
+        #region Listlink
+        
+        public static List<string> CanGetAllLinksFromFooter()
+        {
+            IWebElement a = Driver.FindElement(By.XPath("/html/body/footer/div"));
+            List <string> value = new List<string>();
+            List<IWebElement> options = new List<IWebElement>(a.FindElements(By.TagName("a")));
+            foreach (IWebElement option in options)
+            {
+                value.Add(option.GetAttribute("href"));
+            }
+            return value;
+        }
+
+
+        public static List<string> AllLinksFromFooter()
+        {
+            List<string> value = new List<string>();
+            value.Add("http://devtechgroup.com/cloud-integration");
+            value.Add("http://devtechgroup.com/contact-us");
+            value.Add("http://devtechgroup.com/contact-us");
+            value.Add("http://devtechgroup.com/vpoint");
+            value.Add("http://devtech.kayako.com/vPoint/Tickets/Submit/RenderForm/8");
+            value.Add("http://devtechgroup.com/company-overview");
+            value.Add("http://devtechgroup.com/management-team");
+            value.Add("http://devtechgroup.com/contact-us");
+     
+            return value;
+        }
+        
+        #endregion
+
+
+        #region Dictionary Link
+        public static bool CanGetAllDictionaryLinksFromFooter()
+        {
+            IWebElement a = Driver.FindElement(By.XPath("/html/body/footer/div"));
+
+            Dictionary<IWebElement,List<IWebElement>> links = new Dictionary<IWebElement, List<IWebElement>>();
+            List<IWebElement> keys = new List<IWebElement>(a.FindElements(By.ClassName("block-title")));
+            List<IWebElement> menu = new List<IWebElement>(a.FindElements(By.ClassName("menu")));
+            //ist<IWebElement> options = new List<IWebElement>(a.FindElements(By.TagName("a")));
+
+            var expectedLinks = PropertyValues.FooterNavigationBar;
+
+            for (int i = 0; i < menu.Count; i++)
+            {
+                links.Add(keys[i], new List<IWebElement> { menu[i] });
+            }
+            foreach (var pair in links)
+            {
+                var key1 = pair.Key.Text;
+                if (expectedLinks.ContainsKey(key1))
+                    Console.WriteLine("True");
+                else
+                return false;
+
+
+            }
+
+            foreach(var pair in links)
+            {
+                List<IWebElement> value1;
+                links.TryGetValue(pair.Key, out value1);
+                var newValue= value1[0].Text.Replace("\r\n", ",").Split(',');
+
+                List<string> value2;
+                expectedLinks.TryGetValue(pair.Key.Text, out value2);
+
+                for(int i=0;i<value1.Count;i++)
+                {
+                    if (value1[i].Equals(value2[i]))
+                        Console.WriteLine("True");
+                    else return false;
+                }
+            }
+
+            return true;
+        }
+        #endregion
+
     }
 }

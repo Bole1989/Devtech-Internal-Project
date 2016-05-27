@@ -13,6 +13,7 @@ namespace TestFrameWorkDevtech
     {
         protected DevtechHomePage onDevtechHomePage;
         protected FooterPage onFooterPage;
+        public string[] browserArray = new string[] { "Chrome", "Firefox" };
 
         [TestInitialize]
         public void ReferencesOfThePages()
@@ -21,10 +22,9 @@ namespace TestFrameWorkDevtech
             onFooterPage = new FooterPage();
         }
         public void SetWebPage(IWebDriver driver)
-        {           
+        {
             driver.Navigate().GoToUrl(PropertyValues.LoginUrl);
-             driver.Manage().Window.Maximize();
-            //driver.Manage().Window.Size = new System.Drawing.Size(500, 1000);
+            driver.Manage().Window.Maximize();
         }
         public void StartWebBrowsers()
         {
@@ -34,17 +34,37 @@ namespace TestFrameWorkDevtech
             chromeOptions.AddArgument("test-type");
             chromeOptions.AddArgument("start-maximized");
             chromeOptions.LeaveBrowserRunning = true;
-            //Driver = new ChromeDriver(@"C:\SeleniumBrowserServers", chromeOptions);
+            Driver = new ChromeDriver(@"C:\ChromeServer", chromeOptions);
 
             // FireFox
             FirefoxOptions firefoxOptions = new FirefoxOptions();
-            Driver = new FirefoxDriver();
-            Wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(30));
-            SetWebPage(Driver);                   
+            //Driver = new FirefoxDriver();
+             Wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(30));
+
+
+
+            /*switch (browser)
+            {
+                case "Chrome":
+                    Driver = new ChromeDriver(@"C:\ChromeServer", chromeOptions);
+                    break;
+                case "Firefox":
+                    FirefoxProfile profile = new FirefoxProfile();
+                    //profile.AcceptUntrustedCertificates = true;
+                    Driver = new FirefoxDriver(profile);
+                    Wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(30));
+                    break;
+                default:
+                    // Trace.WriteLine(String.Format("Browser '{0}' not recognized.  Spawning default Firefox browser.", browser));
+                    Driver = new FirefoxDriver();
+                    break;
+            }*/
+            SetWebPage(Driver);
         }
 
         //Check for Title on HomePage
         public static string Title => Driver.Title;
+        public static string CurrentUrl => Driver.Url;
 
         [TestCleanup]
         public void QuitOption()
@@ -53,9 +73,11 @@ namespace TestFrameWorkDevtech
         }
 
         [TestInitialize]
+  
         public void RunBrowsers()
         {
             StartWebBrowsers();
         }
     }
 }
+

@@ -1,10 +1,12 @@
-﻿namespace TestFrameWorkDevtech
+﻿using System.Collections.Generic;
+
+namespace TestFrameWorkDevtech
 {
     public class PropertyValues
     {
         //Devtech page URL
-        public const string LoginUrl = "http://192.168.88.226";
-
+        //public const string LoginUrl = "http://192.168.88.226";
+        public const string LoginUrl = "http://devtechgroup.com/";
 #region Titles
         public static string DevtechPageTitle = "DEVTECH | The Cloud Experts";
 
@@ -42,5 +44,19 @@
 
         public static string GooglePageTitle = "DEVTECH - Google+";
         #endregion
+#region URLS
+        public static string WhitePaperPageUrl = "http://devtechgroup.com/sites/default/files/DEVTECH_Structure_and_Processes.pdf";
+        public static string TaasPodcastPageUrl = "http://devtechgroup.com/sites/default/files/DEVTECH_TAAS%20Podcast_Transcript.pdf";
+        public static string FacebookPageUrl = "https://www.facebook.com/devtechgroup/";
+        public static string GooglePageUrl = "";
+        #endregion
+        public static Dictionary<string, List<string>> FooterNavigationBar = new Dictionary<string, List<string>>()
+        {
+            {"SERVICES", new List<string> {"Cloud Integration","Cloud Migration","Cloud Operational Support"}},
+            {"PRODUCTS", new List<string> {"vPoint","vPoint Support"}},
+            {"ABOUT US", new List<string> {"Company overview","Management Team"}},
+            {"CONTACT", new List<string> {"Contact Us"}}
+
+        };
     }
 }

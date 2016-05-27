@@ -10,7 +10,9 @@ namespace TestFrameWorkDevtech.Page_classes
     {
         public bool IsAtWhitePaperPage()
         {
-            return BaseClass.Title == PropertyValues.WhitePaperPageTitle;
+            System.Threading.Thread.Sleep(1000);
+            //return BaseClass.Title == PropertyValues.WhitePaperPageTitle;
+            return BaseClass.CurrentUrl==PropertyValues.WhitePaperPageUrl;
         }
     }
 }

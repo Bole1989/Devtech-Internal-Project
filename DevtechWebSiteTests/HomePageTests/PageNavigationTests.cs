@@ -48,7 +48,7 @@ namespace DevtechWebSiteTests.HomePageTests
         public void CanGoOnCareersPage()
         {
             // Navigate to Contact page
-            CareesPage onCareesPage = onDevtechHomePage.CanGoToCareerstPage();
+            CareesPage onCareesPage = onDevtechHomePage.CanGoToCareersPage();
 
             Assert.IsTrue(onCareesPage.IsAtCareersPage());
             Debug.Write("Careers Page on FireFox");
@@ -160,6 +160,29 @@ namespace DevtechWebSiteTests.HomePageTests
             GooglePage onGooglePage = onFooterPage.CanGoToGooglePage();
             Assert.IsTrue(onGooglePage.IsAtGooglePage());
             Debug.Write("Google Page on FireFox");
+        }
+
+        [TestMethod] 
+        public void CanClickOnVacantPostion()
+        {
+
+            DevtechHomePage onCareerspage = new DevtechHomePage();
+            onCareerspage.canClickOnVacantPosition();
+            //ASSERT FALI
+        }
+
+
+        [TestMethod]
+        public void CanClickOnDetails()
+        {
+            string firstline;
+            DevtechHomePage onHome = new DevtechHomePage();
+
+            CareesPage onCareer = new CareesPage();
+            onHome.canClickOnVacantPosition();
+            onCareer.ClickOnDetails1();
+            firstline = onCareer.getFirstLine();
+            Assert.AreEqual( "3 years’ experience supporting Linux environments ",firstline);
         }
 
     }

@@ -13,9 +13,10 @@ namespace TestFrameWorkDevtech
     }
     public class PropertyCollection
     {
+   
         public static IWebDriver DriverChrome, Driver;
         public static WebDriverWait Wait;
         public static string Hwnd;
-
+    
     }
 }

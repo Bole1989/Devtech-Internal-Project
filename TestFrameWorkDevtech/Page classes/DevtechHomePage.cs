@@ -9,7 +9,7 @@ using System.Linq;
 namespace TestFrameWorkDevtech.Page_classes
 {
     public class DevtechHomePage : PropertyCollection
-    {      
+    {
         public DevtechHomePage()
         {
             PageFactory.InitElements(Driver, this);
@@ -20,9 +20,8 @@ namespace TestFrameWorkDevtech.Page_classes
         public IWebElement HomeDefault { get; set; }
 
         //Contact page Link
-        [FindsBy(How = How.CssSelector, Using = "body > footer > div > section.span2 > div > div > ul > li > a")]
+        [FindsBy(How = How.CssSelector, Using = "#navbar > div > div > div > nav > ul > li.last.leaf > a")]
         public IWebElement Contact { get; set; }
-
 
         //Careers page Link
         [FindsBy(How = How.CssSelector, Using = "#navbar > div > div > div > nav > ul > li:nth-child(4) > a")]
@@ -43,7 +42,7 @@ namespace TestFrameWorkDevtech.Page_classes
         //Cloud Operational support link
         [FindsBy(How = How.XPath, Using = "/html/body/header/div/div/div/nav/ul/li[1]/ul/li[3]/a")]
         public IWebElement CloudOperationalSupport { get; set; }
-            
+
         //Service Delivery link
         [FindsBy(How = How.XPath, Using = "//*[@id='navbar']/div/div/div/nav/ul/li[1]/ul/li[4]/a")]
         public IWebElement ServiceDelivery { get; set; }
@@ -89,13 +88,13 @@ namespace TestFrameWorkDevtech.Page_classes
         public IWebElement ManagementTeam { get; set; }
 
         //P1 Text on HomePage
-        [FindsBy(How= How.XPath,Using = "/html/body/div[2]/div/section/article/div/div/div/p[1]")]
+        [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div/section/article/div/div/div/p[1]")]
         public IWebElement HomePagep1Text { get; set; }
 
         //Whitepaper holder
         [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div/aside/div/section/section/div/div")]
         public IWebElement WhitepaperHolder { get; set; }
-        
+
         //Whitepaper link
         [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div/aside/div/section/section/div/ul/li/a")]
         public IWebElement Whitepaper { get; set; }
@@ -111,6 +110,12 @@ namespace TestFrameWorkDevtech.Page_classes
         //Side bar
         [FindsBy(How = How.XPath, Using = "/html/body/header/div/div/a[1]")]
         public IWebElement SiderBar { get; set; }
+
+        //Vacant Position
+        [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div/section/article/a")]
+        public IWebElement VacantPosition { get; set; }
+
+        
         #endregion
 
         // Check Title on HomePage
@@ -152,7 +157,7 @@ namespace TestFrameWorkDevtech.Page_classes
         }
 
         //Go to Carrers page
-        public CareesPage CanGoToCareerstPage()
+        public CareesPage CanGoToCareersPage()
         {
             var career = Wait.Until(ExpectedConditions.ElementToBeClickable(Career));
             career.Click();
@@ -207,12 +212,12 @@ namespace TestFrameWorkDevtech.Page_classes
 
         public VPointPage CanGoToVPointPage()
         {
-        
+
             MoveToElementAction.Perform(Products);
             var vpoint = Wait.Until(ExpectedConditions.ElementToBeClickable(VPoint));
             vpoint.Click();
             return new VPointPage();
-        } 
+        }
 
         public WhitePaperPage CanGoToWhitePaperPage()
         {
@@ -263,10 +268,20 @@ namespace TestFrameWorkDevtech.Page_classes
 
         }
 
+   
+
         public void CanClickOnSideBar()
         {
             var sidebar = Wait.Until(ExpectedConditions.ElementToBeClickable(SiderBar));
             sidebar.Click();
+        }
+
+
+        public void canClickOnVacantPosition()
+        {
+            CanGoToCareersPage();
+            var vacantposition = Wait.Until(ExpectedConditions.ElementToBeClickable(VacantPosition));
+            vacantposition.Click();
         }
 
 
@@ -281,6 +296,8 @@ namespace TestFrameWorkDevtech.Page_classes
                 action.Perform();
             }
         }
+
+
         // All links from home page
         public static List<string> CanGetAllLinksFromTopBar()
         {
