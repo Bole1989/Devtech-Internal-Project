@@ -58,6 +58,17 @@ namespace DevtechWebSiteTests.HomePageTests
         {
             FooterPage.CanGetAllDictionaryLinksFromFooter();
         }
+        /*
+        [TestMethod]
+        //Check Employ Testemonials
+        public void CheckEmployTestemonial1()
+        {
+            CareersPage onCareresPage = onDevtechHomePage.CanGoToCareersPage();
+
+
+        }
+        */
+
 
 
     }

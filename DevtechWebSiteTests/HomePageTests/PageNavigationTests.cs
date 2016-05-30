@@ -48,9 +48,9 @@ namespace DevtechWebSiteTests.HomePageTests
         public void CanGoOnCareersPage()
         {
             // Navigate to Contact page
-            CareesPage onCareesPage = onDevtechHomePage.CanGoToCareersPage();
+            CareersPage onCareersPage = onDevtechHomePage.CanGoToCareersPage();
 
-            Assert.IsTrue(onCareesPage.IsAtCareersPage());
+            Assert.IsTrue(onCareersPage.IsAtCareersPage());
             Debug.Write("Careers Page on FireFox");
         }
 

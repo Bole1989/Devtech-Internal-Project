@@ -5,7 +5,7 @@ using System;
 
 namespace TestFrameWorkDevtech.Page_classes
 {
-    public class CareesPage : PropertyCollection
+    public class CareersPage : PropertyCollection
     {
         /*[FindsBy(How = How.XPath, Using = "/html/body/div[2]/div/section/section[4]/div/div[2]/div/ul/li[1]/article/a")]
         public IWebElement Details1 { get; set; }*/

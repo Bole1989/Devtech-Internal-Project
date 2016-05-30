@@ -157,11 +157,11 @@ namespace TestFrameWorkDevtech.Page_classes
         }
 
         //Go to Carrers page
-        public CareesPage CanGoToCareersPage()
+        public CareersPage CanGoToCareersPage()
         {
             var career = Wait.Until(ExpectedConditions.ElementToBeClickable(Career));
             career.Click();
-            return new CareesPage();
+            return new CareersPage();
         }
 
         //Go to Clound Integration page
