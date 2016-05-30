@@ -166,7 +166,7 @@ namespace DevtechWebSiteTests.HomePageTests
         public void CanClickOnVacantPostion()
         {
 
-            DevtechHomePage onCareerspage = new DevtechHomePage();
+            CareersPage onCareerspage = onDevtechHomePage.CanGoToCareersPage();
             onCareerspage.canClickOnVacantPosition();
             //ASSERT FALI
         }
@@ -176,10 +176,9 @@ namespace DevtechWebSiteTests.HomePageTests
         public void CanClickOnDetails()
         {
             string firstline;
-            DevtechHomePage onHome = new DevtechHomePage();
 
-            CareesPage onCareer = new CareesPage();
-            onHome.canClickOnVacantPosition();
+            CareersPage onCareer = onDevtechHomePage.CanGoToCareersPage();
+            onCareer.canClickOnVacantPosition();
             onCareer.ClickOnDetails1();
             firstline = onCareer.getFirstLine();
             Assert.AreEqual( "3 years’ experience supporting Linux environments ",firstline);

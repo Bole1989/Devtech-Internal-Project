@@ -38,7 +38,7 @@ namespace TestFrameWorkDevtech
 
             // FireFox
             FirefoxOptions firefoxOptions = new FirefoxOptions();
-            //Driver = new FirefoxDriver();
+           // Driver = new FirefoxDriver();
              Wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(30));
 
 

@@ -111,9 +111,7 @@ namespace TestFrameWorkDevtech.Page_classes
         [FindsBy(How = How.XPath, Using = "/html/body/header/div/div/a[1]")]
         public IWebElement SiderBar { get; set; }
 
-        //Vacant Position
-        [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div/section/article/a")]
-        public IWebElement VacantPosition { get; set; }
+
 
         
         #endregion
@@ -277,12 +275,7 @@ namespace TestFrameWorkDevtech.Page_classes
         }
 
 
-        public void canClickOnVacantPosition()
-        {
-            CanGoToCareersPage();
-            var vacantposition = Wait.Until(ExpectedConditions.ElementToBeClickable(VacantPosition));
-            vacantposition.Click();
-        }
+  
 
 
         #endregion

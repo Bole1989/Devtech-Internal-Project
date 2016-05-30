@@ -58,18 +58,50 @@ namespace DevtechWebSiteTests.HomePageTests
         {
             FooterPage.CanGetAllDictionaryLinksFromFooter();
         }
-        /*
+        
         [TestMethod]
-        //Check Employ Testemonials
+        //Check Employ Testemonials 1
         public void CheckEmployTestemonial1()
         {
-            CareersPage onCareresPage = onDevtechHomePage.CanGoToCareersPage();
-
-
+            CareersPage onCareersPage = onDevtechHomePage.CanGoToCareersPage();
+            
+            onCareersPage.hoverOverTestemonials();
+            onCareersPage.clickOnTestemonial1();
+            Assert.AreEqual(PropertyValues.FirstName,onCareersPage.getFirstName());
         }
-        */
 
+        [TestMethod]
+        //Check Employ Testemonials 2
+        public void CheckEmployTestemonial2()
+        {
+            CareersPage onCareersPage = onDevtechHomePage.CanGoToCareersPage();
 
+            onCareersPage.hoverOverTestemonials();
+            onCareersPage.clickOnTestemonial2();
+            Assert.AreEqual(PropertyValues.SecondName, onCareersPage.getSecondName());
+        }
+
+        [TestMethod]
+        //Check Employ Testemonials 3
+        public void CheckEmployTestemonial3()
+        {
+            CareersPage onCareersPage = onDevtechHomePage.CanGoToCareersPage();
+
+            onCareersPage.hoverOverTestemonials();
+            onCareersPage.clickOnTestemonial3();
+            Assert.AreEqual(PropertyValues.ThirdName, onCareersPage.getThirdName());
+        }
+
+        [TestMethod]
+        //Check Employ Testemonials 4
+        public void CheckEmployTestemonial4()
+        {
+            CareersPage onCareersPage = onDevtechHomePage.CanGoToCareersPage();
+
+            onCareersPage.hoverOverTestemonials();
+            onCareersPage.clickOnTestemonial4();
+            Assert.AreEqual(PropertyValues.FourthName, onCareersPage.getFourthName());
+        }
 
     }
 }

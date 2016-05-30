@@ -50,6 +50,12 @@ namespace TestFrameWorkDevtech
         public static string FacebookPageUrl = "https://www.facebook.com/devtechgroup/";
         public static string GooglePageUrl = "";
         #endregion
+        #region Names
+        public static string FirstName = "ALEKSANDAR TOMIC";
+        public static string SecondName = "MILICA DJURICIC";
+        public static string ThirdName = "FILIP INJAC";
+        public static string FourthName = "MILICA PRIJOVIC";
+        #endregion
         public static Dictionary<string, List<string>> FooterNavigationBar = new Dictionary<string, List<string>>()
         {
             {"SERVICES", new List<string> {"Cloud Integration","Cloud Migration","Cloud Operational Support"}},
