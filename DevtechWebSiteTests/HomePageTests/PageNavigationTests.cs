@@ -181,7 +181,7 @@ namespace DevtechWebSiteTests.HomePageTests
             onCareer.canClickOnVacantPosition();
             onCareer.ClickOnDetails1();
             firstline = onCareer.getFirstLine();
-            Assert.AreEqual( "3 years’ experience supporting Linux environments ",firstline);
+            Assert.AreEqual( "3 years’ experience supporting Linux enviornments ",firstline);
         }
 
     }

@@ -58,13 +58,13 @@ namespace DevtechWebSiteTests.HomePageTests
         {
             FooterPage.CanGetAllDictionaryLinksFromFooter();
         }
-        
+        #region Testimonial Tests v.1
+        /*
         [TestMethod]
         //Check Employ Testemonials 1
         public void CheckEmployTestemonial1()
         {
-            CareersPage onCareersPage = onDevtechHomePage.CanGoToCareersPage();
-            
+            CareersPage onCareersPage = onDevtechHomePage.CanGoToCareersPage();        
             onCareersPage.hoverOverTestemonials();
             onCareersPage.clickOnTestemonial1();
             Assert.AreEqual(PropertyValues.FirstName,onCareersPage.getFirstName());
@@ -102,6 +102,54 @@ namespace DevtechWebSiteTests.HomePageTests
             onCareersPage.clickOnTestemonial4();
             Assert.AreEqual(PropertyValues.FourthName, onCareersPage.getFourthName());
         }
+        */
+        #endregion
 
+        [TestMethod]
+        //Check testimonials
+        public void checkTestimonials()
+        {
+            CareersPage onCareersPage = onDevtechHomePage.CanGoToCareersPage();
+            onCareersPage.hoverOverTestemonials();   
+            Assert.IsTrue(onCareersPage.getTestimonialNods());
+        }
+
+        [TestMethod]
+        //Check does Services submenu appears
+        public void checkServicesHover()
+        {
+            onDevtechHomePage.HoverOverServices();
+            bool isTrue=onDevtechHomePage.isServicesVisible();
+            Assert.IsTrue(isTrue);
+        }
+
+        [TestMethod]
+        //Check does Service delivery submenu appears
+        public void checkServicesDeliveryHover()
+        {
+            onDevtechHomePage.HoverOverServices();
+            onDevtechHomePage.HoverOverServiceDelivery();
+            bool isTrue = onDevtechHomePage.isServiceDeliveryVisible();
+            Assert.IsTrue(isTrue);
+        }
+
+        [TestMethod]
+        //Check does Products submenu appears
+        public void checkProductsHover()
+        {
+            onDevtechHomePage.HoverOverProducts();
+            bool isTrue = onDevtechHomePage.isProductsVisible();
+            Assert.IsTrue(isTrue);
+        }
+
+
+        [TestMethod]
+        //Check does About us submenu appears
+        public void checkAboutUsHover()
+        {
+            onDevtechHomePage.HoverOverAboutUs();
+            bool isTrue = onDevtechHomePage.isAboutUsVisible();
+            Assert.IsTrue(isTrue);
+        }
     }
 }

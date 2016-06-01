@@ -6,6 +6,7 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Support.PageObjects;
 using TestFrameWorkDevtech.Page_classes;
+using System.Drawing;
 
 namespace TestFrameWorkDevtech
 {
@@ -25,6 +26,7 @@ namespace TestFrameWorkDevtech
         {
             driver.Navigate().GoToUrl(PropertyValues.LoginUrl);
             driver.Manage().Window.Maximize();
+            //driver.Manage().Window.Size=new Size(800,1000);
         }
         public void StartWebBrowsers()
         {
@@ -34,11 +36,11 @@ namespace TestFrameWorkDevtech
             chromeOptions.AddArgument("test-type");
             chromeOptions.AddArgument("start-maximized");
             chromeOptions.LeaveBrowserRunning = true;
-            Driver = new ChromeDriver(@"C:\ChromeServer", chromeOptions);
+           // Driver = new ChromeDriver(@"C:\ChromeServer", chromeOptions);
 
             // FireFox
             FirefoxOptions firefoxOptions = new FirefoxOptions();
-           // Driver = new FirefoxDriver();
+            Driver = new FirefoxDriver();
              Wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(30));
 
 

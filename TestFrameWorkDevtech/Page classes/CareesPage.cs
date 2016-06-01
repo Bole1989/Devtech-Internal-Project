@@ -3,6 +3,7 @@ using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
 using System;
+using System.Collections.Generic;
 
 namespace TestFrameWorkDevtech.Page_classes
 {
@@ -22,7 +23,7 @@ namespace TestFrameWorkDevtech.Page_classes
         //Vacant Position
         [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div/section/article/a")]
         public IWebElement VacantPosition { get; set; }
-
+        /*
         [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div/section/section[2]/div/div/div/ol/li[1]/a")]
         public IWebElement Testemonial1 { get; set; }
 
@@ -46,13 +47,20 @@ namespace TestFrameWorkDevtech.Page_classes
 
         [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div/section/section[2]/div/div/div/ul/li[4]/article/header/h2")]
         public IWebElement FourthName { get; set; }
+        */
 
         [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div/section/section[2]/h2")]
         public IWebElement TestemonialBlock { get; set; }
 
-
         [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div/section/section[3]/h2")]
         public IWebElement OurOffices { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div/section/section[2]/div/div/div/ol")]
+        public IWebElement TestimonialNods { get; set; }
+
+        [FindsBy(How = How.CssSelector, Using = "article.nod.node-employee-testimonial header h2")]
+        public IWebElement EmployeeNames { get; set; }
+
         #endregion
         public bool IsAtCareersPage()
         {
@@ -81,7 +89,7 @@ namespace TestFrameWorkDevtech.Page_classes
         public void hoverOverTestemonials()
         {
             Actions action = new Actions(Driver);
-            action.MoveToElement(OurOffices);
+            action.MoveToElement(TestemonialBlock);
             action.Perform();
         }
 
@@ -90,7 +98,8 @@ namespace TestFrameWorkDevtech.Page_classes
             var vacantposition = Wait.Until(ExpectedConditions.ElementToBeClickable(VacantPosition));
             vacantposition.Click();
         }
-
+        #region Testimonials V.1
+        /*
         public void clickOnTestemonial1()
         {
             var testemonial = Wait.Until(ExpectedConditions.ElementToBeClickable(Testemonial1));
@@ -111,8 +120,66 @@ namespace TestFrameWorkDevtech.Page_classes
             var testemonial = Wait.Until(ExpectedConditions.ElementToBeClickable(Testemonial4));
             testemonial.Click();
         }
+        */
+        #endregion
 
+        public bool getTestimonialNods()
+        {
+            int i = 0;
+            int j = 0;
+            IList<IWebElement> nods = Driver.FindElements(By.CssSelector("ol.flex-control-nav li"));
+            IList<IWebElement> EmployeeNames = Driver.FindElements(By.CssSelector("article.node.node-employee-testimonial header h2"));
+            List<bool> statements = new List<bool>();
+            String[] allNames = new String[EmployeeNames.Count];
 
+            foreach (IWebElement element in EmployeeNames)
+            {
+                var el = Wait.Until(ExpectedConditions.ElementToBeClickable(element));
+                allNames[j++] = el.Text;
+            }
+
+            foreach (IWebElement nod in nods)
+            {
+                
+                var testimonial = Wait.Until(ExpectedConditions.ElementToBeClickable(nod));
+                System.Threading.Thread.Sleep(1000);
+                testimonial.Click();
+                switch (i)
+                {
+                    case 0:
+                        if (allNames[i].Equals(PropertyValues.FirstName))
+                            statements.Add(true);
+                        else statements.Add(false);
+                        break;
+                    case 1:
+                        if (allNames[i].Equals(PropertyValues.SecondName))
+                            statements.Add(true);
+                        else statements.Add(false);
+                        break;
+                    case 2:
+                        if (allNames[i].Equals(PropertyValues.ThirdName))
+                            statements.Add(true);
+                        else statements.Add(false);
+                        break;
+                    case 3:
+                        if (allNames[i].Equals(PropertyValues.FourthName))
+                            statements.Add(true);
+                        else statements.Add(false);
+                        break;
+                    default:
+                        statements.Add(false);
+                        break;
+                }
+                i++;
+
+            }
+            if (statements.Contains(false)){
+                return false;
+            }
+            else return true;
+        }
+        /*
+        # region getNames()
         public string getFirstName()
         {
             string firstname = FirstName.Text;
@@ -136,5 +203,8 @@ namespace TestFrameWorkDevtech.Page_classes
             string fourthname = FourthName.Text;
             return fourthname;
         }
+
+        #endregion
+        */
     }
 }

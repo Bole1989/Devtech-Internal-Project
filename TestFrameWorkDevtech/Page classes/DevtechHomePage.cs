@@ -111,9 +111,25 @@ namespace TestFrameWorkDevtech.Page_classes
         [FindsBy(How = How.XPath, Using = "/html/body/header/div/div/a[1]")]
         public IWebElement SiderBar { get; set; }
 
+        //Services menu block
+        [FindsBy(How = How.XPath, Using = "/html/body/header/div/div/div/nav/ul/li[1]/ul")]
+        public IWebElement ServicesBlock { get; set; }
 
+        //ServiceDelivery menu block
+        [FindsBy(How = How.XPath, Using = "/html/body/header/div/div/div/nav/ul/li[1]/ul/li[4]/ul")]
+        public IWebElement ServiceDeliveryBlock { get; set; }
 
+        //Products menu block
+        [FindsBy(How = How.XPath, Using = "/html/body/header/div/div/div/nav/ul/li[2]/ul")]
+        public IWebElement ProductsBlock { get; set; }
         
+        //AboutUs block
+        [FindsBy(How = How.XPath, Using = "/html/body/header/div/div/div/nav/ul/li[3]/ul")]
+        public IWebElement AboutUsBlock { get; set; }
+
+
+
+
         #endregion
 
         // Check Title on HomePage
@@ -263,21 +279,81 @@ namespace TestFrameWorkDevtech.Page_classes
             var managementteam = Wait.Until(ExpectedConditions.ElementToBeClickable(ManagementTeam));
             managementteam.Click();
             return new ManagementTeamPage();
-
         }
 
-   
+        public void HoverOverServices()
+        {
+            MoveToElementAction.Perform(Services);
+        }
+
+        public void HoverOverProducts()
+        {
+            MoveToElementAction.Perform(Products);
+        }
+
+        public void HoverOverAboutUs()
+        {
+            MoveToElementAction.Perform(AboutUs);
+        }
+
+        public bool isServicesVisible()
+        {
+            IList<IWebElement> menuItems = Driver.FindElements(By.XPath("/html/body/header/div/div/div/nav/ul/li[1]/ul/li"));
+            foreach (IWebElement item in menuItems)
+            {
+                if (!item.Displayed)
+                    return false;
+            }
+            return true;
+        }
+
+        public bool isProductsVisible()
+        {
+            IList<IWebElement> menuItems = Driver.FindElements(By.CssSelector("li.expanded.dropdown:nth-of-type(2) ul.dropdown-menu"));
+            foreach (IWebElement item in menuItems)
+            {
+                if (!item.Displayed)
+                    return false;
+            }
+            return true;
+        }
+        public bool isAboutUsVisible()
+        {
+            IList<IWebElement> menuItems = Driver.FindElements(By.CssSelector("li.expanded.dropdown:nth-of-type(3) ul.dropdown-menu"));
+            foreach (IWebElement item in menuItems)
+            {
+                if (!item.Displayed)
+                    return false;
+            }
+            return true;
+        }
+
+
+        public void HoverOverServiceDelivery()
+        {
+            MoveToElementAction.Perform(ServiceDelivery);
+            ServiceDelivery.Click();
+        }
+
+
+        public bool isServiceDeliveryVisible()
+        {
+          IList<IWebElement> menuItems= Driver.FindElements(By.CssSelector("ul.dropdown-menu li ul.dropdown-menu li a"));
+          foreach(IWebElement item in menuItems)
+            {
+                if (!item.Displayed)
+                    return false;                 
+            }
+            return true;
+        }
+
+
 
         public void CanClickOnSideBar()
         {
             var sidebar = Wait.Until(ExpectedConditions.ElementToBeClickable(SiderBar));
             sidebar.Click();
         }
-
-
-  
-
-
         #endregion
 
         public class MoveToElementAction
